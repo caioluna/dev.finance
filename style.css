@@ -1,0 +1,393 @@
+/* Globals =============================== */
+
+html {
+    font-size: 93.75%;
+}
+
+:root {
+    --data-width: min(90vw, 800px);
+    --dark-blue: #363f5f;
+    --gray-blue: #969CB2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    background-color: #E5E5E5;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.container {
+    width: var(--data-width);
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+.button {
+    display: inline-block;
+    color: #49AA26;
+}
+
+.button:hover {
+    color: #3dd705;
+}
+
+.button.new {
+    margin-bottom: 8px;
+}
+
+/* Header =============================== */
+
+header {
+    background-color: #2D4A22;
+    width: 100vw;
+    color: #fff;
+    text-align: center;
+    height: 238px;
+    padding: 28px;
+}
+
+header img {
+    width: min(90%, 200px);
+}
+
+/* Main =============================== */
+
+main section#balance {
+    margin-top: -103px;
+}
+
+/* Section Cards =============================== */
+
+.card {
+    background-color: #fff;
+    margin-bottom: 32px;
+    padding: 25px 32px;
+    border-radius: 5px;
+}
+
+.card .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card h2 {
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 24px;
+    color: var(--dark-blue);
+}
+
+.card p {
+    font-size: 2.4rem;
+    line-height: 54px;
+    font-weight: 500;
+    color: var(--dark-blue);
+}
+
+.card.total {
+    background-color: #49AA26;
+    color: #fff;
+}
+
+.card.total h2,
+.card.total p {
+    color: #fff;
+}
+
+.balance-wrapper {
+    display: block;
+    overflow-x: auto;
+}
+
+/* Section Transactions =============================== */
+
+#data-table {
+    margin-top: 25px;
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* Table =============================== */
+
+table {
+    border-spacing: 0 8px;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+table thead tr,
+table tbody tr {
+    background-color: #fff;
+}
+
+table tbody tr {
+    opacity: .8;
+}
+
+table tbody tr img {
+    cursor: pointer;
+}
+
+table tbody tr:hover {
+    opacity: 1;
+}
+
+table thead tr th {
+    color: var(--gray-blue);
+    font-weight: 400;
+}
+
+table tr th,
+table tr td {
+    line-height: 24px;
+    padding: 20px 25px;
+    overflow-wrap: break-word;
+}
+
+table thead tr th:first-child,
+table tbody tr td:first-child {
+    border-radius: 5px 0 0 5px;
+    width: 50%;
+}
+
+table thead tr th:last-child,
+table tbody tr td:last-child {
+    border-radius: 0 5px 5px 0;
+    display: flex;
+    justify-content: end;
+}
+
+table tbody tr td:last-child {
+    color: var(--gray-blue);
+}
+
+table tbody tr td:first-child {
+    color: var(--dark-blue);
+}
+
+.expense {
+    color: #E92929;
+}
+
+.income {
+    color: #49AA26;
+}
+
+/* Modal =============================== */
+
+.modal-overlay {
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(0, 0, 0, 0.7);
+
+    position: fixed;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    width: var(--data-width);
+    max-width: 600px;
+    padding: 5%;
+    background-color: #E5E5E5;
+    border-radius: 5px;
+}
+
+#new-data {
+    width: 100%;
+}
+
+#new-data legend {
+    font-size: 1.8rem;
+    color: var(--dark-blue);
+    text-align: left;
+}
+
+#new-data input {
+    border-radius: 5px;
+    line-height: 24px;
+    display: block;
+
+    width: 100%;
+    margin: 15px auto;
+    padding: 18px 22px;
+
+    font-size: 1.2rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+#new-data fieldset {
+    width: 100%;
+    color: var(--gray-blue);
+}
+
+#new-data fieldset #amount {
+    margin-bottom: 2px;
+    padding-left: 55px;
+}
+
+.amount {
+    position: relative;
+}
+
+.amount::before {
+    position: absolute;
+    content: "R$";
+    left: 22px;
+    line-height: 64px;
+    height: 10px;
+    width: 10px;
+    z-index: 1;
+    font-size: 1.3rem;
+}
+
+input {
+    border: 2px solid rgba(0, 0, 0, 0);
+}
+
+input:required:valid {
+    outline-color: #49AA26;
+    border: 2px solid #49AA26;
+}
+
+input:required:invalid {
+    outline-color: #E92929;
+    border: 2px solid #E92929;
+}
+
+input:focus:required:valid {
+    outline-color: #49AA26;
+}
+
+input:focus:required:invalid {
+    outline-color: #E92929;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-container .cancel {
+    justify-items: start;
+}
+
+.btn-container button,
+.btn-container .button {
+    text-align: center;
+    width: 48%;
+    padding: 18px 22px;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 5px;
+}
+
+.btn-container button:focus {
+    outline: 0;
+}
+
+button, .button {
+    cursor: pointer;
+}
+
+.button.cancel {
+    color: #E92929;
+    border: 2px solid #E92929;
+}
+
+.button.cancel:hover {
+    background-color: #E92929;
+    color: #fff;
+}
+
+button#save {
+    background-color: #49AA26;
+    color: #fff;
+}
+
+button#save:hover {
+    background-color: #2D4A22;
+}
+
+/* Responsive =============================== */
+
+@media (min-width: 800px) {
+
+    html {
+        font-size: 87.5%;
+    }
+
+    header img {
+        width: 200px;
+    }
+    
+    #balance {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 2rem;
+    }
+
+    .wrap {
+        margin-bottom: 10px;
+    }
+
+    .card h2 {
+        font-size: 1rem;
+        color: var(--dark-blue);
+    }
+    
+    .card p {
+        font-size: 1.5rem;
+        font-weight: 500;
+    }
+
+    table {
+        font-size: 1rem;
+        /* display: table; */
+    }
+
+    .button.new {
+        font-size: 1.1rem;
+    }
+
+    /* Modal =========== */
+
+    .modal {
+        padding: min(5%,40px);
+    }
+}
